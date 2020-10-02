@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PROGRAM PENJUALAN MOTOR</title>
+  </head>
+  <body>
+    <center>
+      <h1>PROGRAM PENJUALAN MOTOR</h1> <hr>
+      <form name="form">
+        <table>
+
+          <tr>
+            <td>
+              Merk Motor
+            </td>
+            <td>
+              <select name="imotor" id="imotor">
+                <option value="Honda">Honda</option>
+                <option value="Yamaha">Yamaha</option>
+                <option value="Suzuki">Suzuki</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Aksesoris
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                id="menu1"
+                value="450000"
+              />Velg Racing <br />
+              <input
+                type="checkbox"
+                id="menu2"
+                value="250000"
+              />Helm<br />
+              <input
+                type="checkbox"
+                id="menu3"
+                value="300000"
+              />Jaket <br />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Cara Pembayaran
+            </td>
+            <td>
+                      <input type="radio" name="pil" id="pil1" value="Tunai">Tunai<br>
+                      <input type="radio" name="pil" id="pil2" value="Kredit">Kredit
+            </td>
+              </tr>
+          <tr>
+            <td>
+              Harga
+            </td>
+            <td>
+              <input type="text" size="10" name="otiket" id="otiket" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Bunga/Diskon
+            </td>
+            <td>
+              <input type="text" size="10" name="bungadiskon" id="bungadiskon">
+            </td>
+              </tr>
+          <tr>
+            <td>
+              Total
+            </td>
+            <td>
+              <input type="text" size="10" name="itotal" id="itotal"/>
+            </td>
+         </tr>
+        </table>
+      <hr>
+      <input type="button" value="Proses" onClick="hitungtotal()" />
+      <input type="reset" value="Reset" />
+    </form>
+    </center>
+  </body>
+  <script type="text/javascript">
+    function hitungtotal() {
+      var motor = document.getElementById('imotor').value;
+      var aksesoris, jumlah = 0, jumlahbd = 0, jumlahbunga = 0, total = 0;
+
+      if (motor == 'Honda') {
+        jumlah += 15000000;
+      } else if (motor == 'Yamaha') {
+        jumlah += 14000000;
+      } else {
+        jumlah += 13000000;
+      }
+
+      if (document.getElementById('menu1').checked) {
+        aksesoris = parseInt(document.getElementById('menu1').value);
+        jumlah += aksesoris;
+      }
+      else if (document.getElementById('menu2').checked) {
+        aksesoris = parseInt(document.getElementById('menu2').value);
+        jumlah += aksesoris;
+      }
+      else if (document.getElementById('menu3').checked) {
+        aksesoris = parseInt(document.getElementById('menu3').value);
+        jumlah += aksesoris;
+      }
+      document.getElementById('otiket').value = jumlah;
+
+      var bd = document.getElementsByName("pil");
+      if (bd[0].checked == true) {
+        jumlahbd = jumlah * 0.1;
+        jumlahbd += jumlahbunga;
+        total = jumlah - jumlahbd;
+      }
+      else if (bd[1].checked == true) {
+        jumlahbunga = jumlah * 0.15;
+        jumlahbd += jumlahbunga;
+        total = jumlah + jumlahbd;
+      }
+      document.getElementById('bungadiskon').value = jumlahbd;
+      document.getElementById('itotal').value = total;
+    }
+
+  </script>
+</html>
