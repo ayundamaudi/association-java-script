@@ -1,0 +1,82 @@
+<!DOCTYPE html> 
+<html> 
+    <body> 
+        <p>Klik Tombol untuk mengetahui hari ini.</p> 
+        <button onclick="fungsihari()">Cek Hari</button> 
+        <p id="hari"></p> 
+           <script> 
+            function fungsihari() { 
+                var d=new Date().getDay();
+                var tanggal=new Date().getDate();
+                var bulan=new Date().getMonth(); 
+                var tahun=new Date().getFullYear();
+                
+                switch (d) { 
+                    case 0: 
+                        d="Minggu"; 
+                        break; 
+                    case 1: 
+                        d="Senin"; 
+                        break; 
+                    case 2: 
+                        d="Selasa"; 
+                        break; 
+                    case 3: 
+                        d="Rabu"; 
+                        break; 
+                    case 4: 
+                        d="Kamis"; 
+                        break; 
+                    case 5: 
+                        d="Jum'at"; 
+                        break; 
+                    case 6: 
+                        d="Sabtu"; 
+                        break; 
+                    }
+
+                switch(bulan) {
+                    case 0: 
+                        bulan = "Januari"; 
+                        break;
+                    case 1: 
+                        bulan = "Februari"; 
+                        break;
+                    case 2: 
+                        bulan = "Maret"; 
+                        break;
+                    case 3: 
+                        bulan = "April"; 
+                        break;
+                    case 4: 
+                        bulan = "Mei"; 
+                        break;
+                    case 5: 
+                        bulan = "Juni"; 
+                        break;
+                    case 6: 
+                        bulan = "Juli"; 
+                        break;
+                    case 7: 
+                        bulan = "Agustus"; 
+                        break;
+                    case 8: 
+                        bulan = "September"; 
+                        break;
+                    case 9: 
+                        bulan = "Oktober"; 
+                        break;
+                    case 10: 
+                        bulan = "November"; 
+                        break;
+                    case 11: 
+                        bulan = "Desember"; 
+                        break;
+                }               
+            document.getElementById("hari").innerHTML="Hari ini adalah " + d + ", " + tanggal + " " + bulan + " " + tahun; 
+            }
+        </script> 
+    </body> 
+</html> 
+    
+    
