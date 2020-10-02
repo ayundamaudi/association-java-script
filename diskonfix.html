@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menghitung Diskon</title>
+    <script language="JavaScript" type="text/javascript"> 
+    
+    function hitungdiskon(hargaAwal) { 
+        var hargadiskon;
+
+        hargadiskon = harga * (diskon / 100); 
+        return hargadiskon;
+
+    }
+    
+    var harga = prompt("Masukkan harga barang (Rp) : "); 
+    var diskon = prompt("Masukkan diskon (%) : ");
+
+    document.write("Harga Barang : Rp. " + harga +"<br>");
+    document.write("Diskon : " + diskon +" %<br>");
+    document.write("Besar diskon : Rp. " + hitungdiskon(harga)+"<br>"); 
+    </script> 
+</head>
+<body>
+
+</body>
+</html>
