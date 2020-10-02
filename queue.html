@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<title>Program Queue</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.w3-button {width:100px;}
+.w3-myfont {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+</style>
+<body>
+<center>
+<div class="w3-container w3-myfont">
+<div class="w3-panel w3-border-left w3-pale-red w3-border-red">    
+<p class="w3-xxlarge">Queue</p>
+<form onsubmit="return false">
+  <label>Input Contents of Queue</label>
+  <input type="text" id="input_form"/>
+  <button class="w3-button w3-green" onclick="myFunction()">INSERT</button> <br> <br>
+  <label>Click This Button To Remove Contents of Queue >> </label>
+  <button class="w3-button w3-red" onclick="myFunction1()">REMOVE</button>
+</form> <br><br>
+    </div>
+</div>
+<div class="w3-container w3-myfont">
+<div class="w3-panel w3-border-left w3-pale-blue w3-border-blue"> 
+    <p class="w3-xxlarge">Contents of Queue</p>
+<p id="demo"></p>
+</center>
+<script>
+var fruits = [];
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+  var nilai_form=document.getElementById("input_form").value;
+  fruits[fruits.length] = nilai_form;
+  document.getElementById("demo").innerHTML = fruits;
+}
+function myFunction1() {
+  var text = "";
+	var fruits2= fruits;
+	fruits=[];
+    for (var i = 0; i < (fruits2.length-1); i++) {
+        fruits[i] = fruits2[i+1];
+        text += fruits[i]+",";
+    }
+  if (fruits2.length == 0) {
+    alert("Queue Is Empty!");
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+</div>
+</div>
+</body>
+</html>
