@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+<center>
+<h1>Stack</h1> <hr> <br>
+<form onsubmit="return false">
+  <label>Input Contents of Stack</label>
+  <input type="text" id="input_form"/>
+  <button onclick="myFunction()">PUSH</button> <br> <br>
+  <label>Click This Button To Remove The Stack >> </label>
+  <button onclick="myFunction1()">POP</button>
+</form> <br>
+<hr>
+<h2>Contents of Stack</h2>
+<p id="demo"></p>
+</center>
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+  var nilai_form=document.getElementById("input_form").value;
+  fruits[fruits.length] = nilai_form;
+  document.getElementById("demo").innerHTML = fruits;
+}
+function myFunction1() {
+    var text = "";
+	var fruits2= fruits;
+	fruits=[];
+    for (var i = 0; i < (fruits2.length-1); i++) {
+        fruits[i] = fruits2[i];
+		text += fruits[i] + ",";
+    }
+document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
