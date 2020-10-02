@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TraverseBF</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+    .w3-button {width:100px;}
+    .w3-myfont {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    </style></head>
+<body>
+<script src="trees.js"></script>
+<center>
+<h1 style="background-color:rgb(255, 184, 30);">Traverses Nodes Of a Tree With
+    <br><a href="index.html">BFS</a> And <a href="indexayu.html">DFS</a>
+</h1>
+</center>
+<div class="w3-container w3-myfont">
+<div class="w3-panel w3-border-left w3-pale-red w3-border-red">    
+<p class="w3-xxlarge">Add</p>    
+    <label>Input Child From Parent CEO</label>
+    <input type="text" id="newData">
+    <button onclick="addData()"class="w3-button w3-green">Add</button>
+    <div id="viewData"></div> <hr>
+</div>
+</div>
+<div class="w3-container w3-myfont">
+<div class="w3-panel w3-border-left w3-pale-blue w3-border-blue">    
+<p class="w3-xxlarge">Remove</p> 
+    <label>Input Child's Name</label>
+    <input type="text" id="childName"><br><br>
+    <label>Input Parent's Name</label>
+    <input type="text" id="parentName" value="CEO"><br><br>
+    <button onclick="removeData()" class="w3-button w3-red">Remove</button><br><br>
+    <div id="viewData2"></div>
+</div>
+</div>
+<div class="w3-container w3-myfont">
+    <div class="w3-panel w3-border-left w3-pale-red w3-border-blue">    
+    <p class="w3-xxlarge">Search</p> 
+<input type="text" name="" id="searchData">
+<button onclick="searchData()">Search</button>
+<span>From Parent : <span id="viewData3"></span></span>
+</div>
+</div>
+    <script>
+        var tree = new Tree('CEO');
+        var myArray = [];
+
+        function addData(){
+            var newData = document.getElementById("newData").value;
+            var dataView;
+            tree.add(newData, 'CEO', tree.traverseBF);
+            tree.add('VP of Happiness', 'CEO', tree.traverseBF);
+            tree.add('VP of Finance', 'CEO', tree.traverseBF);
+            tree.add('VP of Sadness', 'CEO', tree.traverseBF);
+            tree.add('Director of Puppies', 'VP of Finance', tree.traverseBF);
+            tree.add('Manager of Puppies', 'Director of Puppies', tree.traverseBF);
+
+            tree.traverseBF(function(node) {
+                console.log(node.data)
+                myArray.push(node.data);
+            });
+
+            var fixText = "";
+            myArray.forEach(element => {
+                    fixText+="<ul>"+element+"</ul>";
+            });
+            document.getElementById("viewData").innerHTML="<br><br>"+fixText+"<br>";
+        }
+        
+        function removeData(){
+            var rmData = document.getElementById("childName").value;
+            var prntName = document.getElementById("parentName").value;
+            
+            tree.remove(rmData, prntName, tree.traverseBF);
+            myArray=[];
+            tree.traverseBF(function(node) {
+                console.log(node.data)
+                myArray.push(node.data);
+            });
+
+            var fixText = "";
+            myArray.forEach(element => {
+                    fixText+="<ul>"+element+"</ul>";
+            });
+
+            document.getElementById("viewData2").innerHTML=fixText;
+
+        }
+        function searchData(){
+            var searchData = document.getElementById("searchData").value;
+            var fixText;
+            tree.contains(function(node){
+                if (node.data === searchData) {
+                    console.log(node);
+                    fixText=node;
+                }
+            }, tree.traverseBF);
+            
+            var parent = fixText["parent"]["data"];
+            document.getElementById("viewData3").innerHTML=parent;
+        }
+    </script>
+</body>
+</html>
